@@ -1,0 +1,380 @@
+{
+	"info": {
+		"_postman_id": "145355a7-98b5-4633-9c27-dfa879345a99",
+		"name": "Temelio Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11800340"
+	},
+	"item": [
+		{
+			"name": "NonProfits",
+			"item": [
+				{
+					"name": "getNonProfits",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImprdSI6Imh0dHBzOi8vYXN5bmMtb25ib2FyZGluZy1rci03N2kyZW5hbC5hdXRoZW50aWNhdGlvbi5zYXAuaGFuYS5vbmRlbWFuZC5jb20vdG9rZW5fa2V5cyIsImtpZCI6ImRlZmF1bHQtand0LWtleS0tODMzNjczNTMyIiwidHlwIjoiSldUIn0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/nonprofits",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"nonprofits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addNonProfit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImprdSI6Imh0dHBzOi8vYXN5bmMtb25ib2FyZGluZy1rci03N2kyZW5hbC5hdXRoZW50aWNhdGlvbi5zYXAuaGFuYS5vbmRlbWFuZC5jb20vdG9rZW5fa2V5cyIsImtpZCI6ImRlZmF1bHQtand0LWtleS0tODMzNjczNTMyIiwidHlwIjoiSldUIn0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"legalName\": \"Clean Air Task Force\",\r\n    \"EIN\": 43512550,\r\n    \"mission\": \"CATF is a nonprofit organization dedicated to reducing atmospheric pollution through research, advocacy, and private sector collaboration.\",\r\n    \"address\" : {\r\n        \"street\": \"548 Market Street\",\r\n        \"city\":\"BOSTON\",\r\n        \"state\": \"New York\",\r\n        \"zip\": 11111\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/nonprofits",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"nonprofits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getNonProfit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Bearer_Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/nonprofits/ffbe289c-0993-4d23-a3b4-da6a09eb7833",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"nonprofits",
+								"ffbe289c-0993-4d23-a3b4-da6a09eb7833"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateNonProfit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Bearer_Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"legalName\": \"Clean Air Task Force Updated\",\r\n    \"mission\": \"CATF is a nonprofit organization dedicated to reducing atmospheric pollution through research, advocacy, and private sector collaboration.\",\r\n    \"address\" : {\r\n        \"city\":\"BOSTON\",\r\n        \"state\": \"New York\",\r\n        \"zip\": 11111\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/nonprofits/9be9c161-7705-443b-8e3f-bd3471859bb9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"nonprofits",
+								"9be9c161-7705-443b-8e3f-bd3471859bb9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GrandSubmissions",
+			"item": [
+				{
+					"name": "getGrandSubmissions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Bearer_Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/nonprofits/c7c50d62-55f8-4b23-aa90-3ea8912ed409/submissions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"nonprofits",
+								"c7c50d62-55f8-4b23-aa90-3ea8912ed409",
+								"submissions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addGrandSubmission",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Bearer_Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"grandName\": \"Clean Air Task Force - 2021 Grant Proposal\",\r\n    \"requestedAmount\": \"$50,000\",\r\n    \"awardedAmount\": \"$40,000\",\r\n    \"grandType\": \"OPERATING_GRANT\",\r\n    \"tags\": [\r\n        \"Global Health\",\r\n        \"Climate\"\r\n    ],\r\n    \"duration\": {\r\n        \"grandStart\": \"01-05-2023\",\r\n        \"grandEnd\": \"12/31/2021\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/nonprofits/628ba051-69d0-40ee-8178-74fe7822ee1c/submissions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"nonprofits",
+								"628ba051-69d0-40ee-8178-74fe7822ee1c",
+								"submissions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getGrandSubmission",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Bearer_Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/nonprofits/455606a7-abea-4095-b27a-e45ff63665e5/submissions/cc4be71b-ecf8-4df6-967a-02af73ff2083",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"nonprofits",
+								"455606a7-abea-4095-b27a-e45ff63665e5",
+								"submissions",
+								"cc4be71b-ecf8-4df6-967a-02af73ff2083"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateGrandSubmission",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Bearer_Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"grandName\": \"Clean Air Task Force - 2021 Grant Proposal - updated\",\r\n    \"requestedAmount\": \"$50,000\",\r\n    \"awardedAmount\": \"$40,000\",\r\n    \"grandType\": \"OPERATING_GRANT\",\r\n    \"tags\": [\r\n        \"Global Health\",\r\n        \"Climate\"\r\n    ],\r\n    \"duration\": {\r\n        \"grandStart\": \"01-05-2023\",\r\n        \"grandEnd\": \"12/31/2024\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/nonprofits/c7c50d62-55f8-4b23-aa90-3ea8912ed409/submissions/dfdd96f7-a36b-4f3a-b02b-e67007507b77",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"nonprofits",
+								"c7c50d62-55f8-4b23-aa90-3ea8912ed409",
+								"submissions",
+								"dfdd96f7-a36b-4f3a-b02b-e67007507b77"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllGrandSubmissions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Bearer_Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/nonprofits/submissions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"nonprofits",
+								"submissions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "swagger",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "PMAK-65b5151136e62400017846ec-5f3cae86cecdab7de72c6d3fa0ea09905a",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "X-API-Key",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.getpostman.com/collections/:11800340-145355a7-98b5-4633-9c27-dfa879345a99",
+					"protocol": "https",
+					"host": [
+						"api",
+						"getpostman",
+						"com"
+					],
+					"path": [
+						"collections",
+						":11800340-145355a7-98b5-4633-9c27-dfa879345a99"
+					],
+					"variable": [
+						{
+							"key": "11800340-145355a7-98b5-4633-9c27-dfa879345a99",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
