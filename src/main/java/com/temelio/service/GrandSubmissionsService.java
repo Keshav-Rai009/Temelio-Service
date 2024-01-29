@@ -85,6 +85,12 @@ public class GrandSubmissionsService {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
 
+		// The grand submission should have same parent non-profit name
+		if (!grandSubmission.getNonProfitName().equals(nonProfit.getLegalName())) {
+			LOGGER.error("Grand submission should have same parent non-profit name.");
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+
 		// a valid grand submission should have an end date after start date
 		if (!this.isValidStartAndEndDuration(grandSubmission.getDuration())) {
 			LOGGER.error("Invalid start and end duration");
@@ -146,6 +152,12 @@ public class GrandSubmissionsService {
 		if (nonProfit == null) {
 			LOGGER.error("Invalid non profit id:" + nonProfitId);
 			return Response.status(Response.Status.NOT_FOUND).build();
+		}
+
+		// The grand submission should have same parent non-profit name
+		if (!grandSubmission.getNonProfitName().equals(nonProfit.getLegalName())) {
+			LOGGER.error("Grand submission should have same parent non-profit name.");
+			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
 
 		final Optional<GrandSubmission> grandSubmissionToBeUpdated =

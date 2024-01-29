@@ -20,7 +20,6 @@ public class NonProfitsService {
 	private static final ConcurrentHashMap<UUID, NonProfit> nonProfits = new ConcurrentHashMap<>();
 	private static final Logger LOGGER = LoggerFactory.getLogger(NonProfitsService.class);
 
-
 	public ConcurrentHashMap<UUID, NonProfit> getNonProfitsMap() {
 		return nonProfits;
 	}
@@ -42,8 +41,9 @@ public class NonProfitsService {
 			return this.updateNonProfit(nonProfitId, nonProfit);
 		}
 
-		if (nonProfit.getLegalName() == null) {
-			LOGGER.error("Non profit name is mandatory in the request body.");
+		// all grand submissions should have same parent non-profit name
+		if (!this.validateGrandSubmissionNonProfitName(nonProfit)) {
+			LOGGER.error("All grand submissions should have same parent non-profit name.");
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
 
@@ -75,15 +75,28 @@ public class NonProfitsService {
 	 */
 	public final Response updateNonProfit(final UUID nonProfitId, final NonProfit nonProfit) {
 		final NonProfit nonProfitToBeUpdated = this.nonProfits.get(nonProfitId);
+		final String existingNonProfitName = nonProfitToBeUpdated.getLegalName();
 
-		if (nonProfit.getLegalName() == null) {
-			LOGGER.error("Non profit name is mandatory in the request body.");
+		if (nonProfitToBeUpdated == null) {
+			LOGGER.error("Non Profit to be updated" + nonProfitId + "not found");
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
+
+		// all grand submissions should have same parent non-profit name
+		if (!this.validateGrandSubmissionNonProfitName(nonProfit)) {
+			LOGGER.error("All grand submissions should have same parent non-profit name.");
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
+
 
 		nonProfit.setId(nonProfitId);
 		this.nonProfits.put(nonProfitId, nonProfit);
 		return Response.ok(nonProfit).build();
 	}
 
+	// all grand submissions should have same parent non-profit name
+	private boolean validateGrandSubmissionNonProfitName(final NonProfit nonProfit) {
+		return nonProfit.getGrandSubmissions().stream().allMatch(grandSubmission ->
+				grandSubmission.getNonProfitName().equals(nonProfit.getLegalName()));
+	}
 }
