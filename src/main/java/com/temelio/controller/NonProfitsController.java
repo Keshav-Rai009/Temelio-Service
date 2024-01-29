@@ -6,8 +6,6 @@ import com.temelio.api.NonProfitsAPI;
 import com.temelio.model.domain.NonProfit;
 import com.temelio.service.NonProfitsService;
 import jakarta.annotation.security.RolesAllowed;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
@@ -48,7 +46,7 @@ public class NonProfitsController implements NonProfitsAPI {
 	@Override
 	@GET
 	@Path("/{id}")
-	public Response getNonProfit(@PathParam("id") @NotNull @Valid final UUID nonProfitId) {
+	public Response getNonProfit(@PathParam("id") final UUID nonProfitId) {
 		return this.nonProfitsService.getNonProfit(nonProfitId);
 	}
 
@@ -60,8 +58,8 @@ public class NonProfitsController implements NonProfitsAPI {
 	@Override
 	@PUT
 	@Path("/{id}")
-	public final Response updateNonProfit(@PathParam("id") @NotNull @Valid final UUID nonProfitId,
-	                                      @NotNull @Valid final NonProfit nonProfit) {
+	public final Response updateNonProfit(@PathParam("id") final UUID nonProfitId,
+	                                      final NonProfit nonProfit) {
 		return this.nonProfitsService.updateNonProfit(nonProfitId, nonProfit);
 	}
 }

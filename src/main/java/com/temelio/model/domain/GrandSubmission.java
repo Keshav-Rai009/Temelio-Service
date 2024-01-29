@@ -22,17 +22,17 @@ public class GrandSubmission {
 	@JsonProperty("nonProfitId")
 	private UUID nonProfitId;
 
-	// allowed : starting with alphanumerics and @ || _ || whitespace || # || - in between
+	// allowed : starting with alphanumerics and @ || _ || whitespace || # || - || ' in between
 	@NotNull
 	@Size(min = 1)
-	@Pattern(regexp = "^[a-zA-Z0-9][A-Za-z0-9 _@./#&+-]*$")
+	@Pattern(regexp = "^[a-zA-Z0-9][A-Za-z0-9 _'@./#&+-]*$")
 	@JsonProperty("nonProfitName")
 	private String nonProfitName;
 
-	// allowed : starting with alphanumerics and @ || _ || whitespace || # || - in between
+	// allowed : starting with alphanumerics and @ || _ || whitespace || # || - || ' in between
 	@NotNull
 	@Size(min = 1)
-	@Pattern(regexp = "^[a-zA-Z0-9][A-Za-z0-9 _@./#&+-]*$")
+	@Pattern(regexp = "^[a-zA-Z0-9][A-Za-z0-9 _'@./#&+-]*$")
 	@JsonProperty("grandName")
 	private String grandName;
 

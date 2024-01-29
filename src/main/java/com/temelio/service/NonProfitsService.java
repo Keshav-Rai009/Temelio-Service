@@ -76,11 +76,6 @@ public class NonProfitsService {
 	public final Response updateNonProfit(final UUID nonProfitId, final NonProfit nonProfit) {
 		final NonProfit nonProfitToBeUpdated = this.nonProfits.get(nonProfitId);
 
-		if (nonProfitToBeUpdated == null) {
-			LOGGER.error("Non Profit to be updated" + nonProfitId + "not found");
-			return Response.status(Response.Status.NOT_FOUND).build();
-		}
-
 		if (nonProfit.getLegalName() == null) {
 			LOGGER.error("Non profit name is mandatory in the request body.");
 			return Response.status(Response.Status.BAD_REQUEST).build();

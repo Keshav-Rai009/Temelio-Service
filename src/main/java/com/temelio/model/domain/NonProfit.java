@@ -19,10 +19,10 @@ public class NonProfit {
 	@JsonProperty("id")
 	private UUID id;
 
-	// allowed : starting with alphanumerics and @ || _ || whitespace || # || - in between
+	// allowed : starting with alphanumerics and @ || _ || whitespace || # || - || ' in between
 	@NotNull
 	@Size(min = 1)
-	@Pattern(regexp = "^[a-zA-Z0-9][A-Za-z0-9 _@./#&+-]*$")
+	@Pattern(regexp = "^[a-zA-Z0-9][A-Za-z0-9 _'@./#&+-]*$")
 	@JsonProperty("legalName")
 	private String legalName;
 

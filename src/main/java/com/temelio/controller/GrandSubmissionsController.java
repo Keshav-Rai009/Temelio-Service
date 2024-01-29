@@ -6,8 +6,6 @@ import com.temelio.api.GrandSubmissionsAPI;
 import com.temelio.model.domain.GrandSubmission;
 import com.temelio.service.GrandSubmissionsService;
 import jakarta.annotation.security.RolesAllowed;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -30,7 +28,7 @@ public class GrandSubmissionsController implements GrandSubmissionsAPI {
 	@Override
 	@GET
 	@Path("/{id}/submissions")
-	public Response getGrandSubmissions(@PathParam("id") @NotNull @Valid final UUID nonProfitId) {
+	public Response getGrandSubmissions(@PathParam("id") final UUID nonProfitId) {
 		return this.grandSubmissionsService.getGrandSubmissions(nonProfitId);
 	}
 
@@ -40,8 +38,7 @@ public class GrandSubmissionsController implements GrandSubmissionsAPI {
 	@Override
 	@POST
 	@Path("/{id}/submissions")
-	public Response addGrandSubmission(@PathParam("id") @NotNull @Valid final UUID nonProfitId,
-	                                   final GrandSubmission grandSubmission) {
+	public Response addGrandSubmission(@PathParam("id") final UUID nonProfitId, final GrandSubmission grandSubmission) {
 		return this.grandSubmissionsService.addGrandSubmission(nonProfitId, grandSubmission);
 	}
 
@@ -53,9 +50,9 @@ public class GrandSubmissionsController implements GrandSubmissionsAPI {
 	@Override
 	@GET
 	@Path("/{id}/submissions/{gSId}")
-	public Response updateGrandSubmission(@PathParam("id") @NotNull @Valid final UUID nonProfitId,
-	                                      @PathParam("gSId") @NotNull @Valid final UUID grandSubmissionId,
-	                                      @NotNull @Valid final GrandSubmission grandSubmission) {
+	public Response updateGrandSubmission(@PathParam("id") final UUID nonProfitId,
+	                                      @PathParam("gSId") final UUID grandSubmissionId,
+	                                      final GrandSubmission grandSubmission) {
 		return this.grandSubmissionsService.updateGrandSubmission(nonProfitId, grandSubmissionId, grandSubmission);
 	}
 
