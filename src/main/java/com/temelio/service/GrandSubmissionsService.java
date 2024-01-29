@@ -80,6 +80,12 @@ public class GrandSubmissionsService {
 			return Response.status(Response.Status.NOT_FOUND).build();
 		}
 
+		if (grandSubmission.getNonProfitName() == null || grandSubmission.getGrandName() == null) {
+			LOGGER.error("Non profit name and grand submission name is mandatory in the request body of grand " +
+					"submission.");
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+
 		if (grandSubmission.getNonProfitId() != null && nonProfitId != grandSubmission.getNonProfitId()) {
 			LOGGER.error("Grand submission's non profit id and path parameter non profit id mismatch");
 			return Response.status(Response.Status.BAD_REQUEST).build();
@@ -146,6 +152,12 @@ public class GrandSubmissionsService {
 		if (nonProfit == null) {
 			LOGGER.error("Invalid non profit id:" + nonProfitId);
 			return Response.status(Response.Status.NOT_FOUND).build();
+		}
+
+		if (grandSubmission.getNonProfitName() == null || grandSubmission.getGrandName() == null) {
+			LOGGER.error("Non profit name and grand submission name is mandatory in the request body of grand " +
+					"submission.");
+			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
 
 		final Optional<GrandSubmission> grandSubmissionToBeUpdated =

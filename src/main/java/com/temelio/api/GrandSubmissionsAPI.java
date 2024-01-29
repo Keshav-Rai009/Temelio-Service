@@ -18,7 +18,7 @@ import jakarta.ws.rs.core.Response;
 @Produces(MediaType.APPLICATION_JSON)
 @RolesAllowed("ADMIN")
 public interface GrandSubmissionsAPI {
-	
+
 	/**
 	 * @return a list of submissions for a nonprofit
 	 */
@@ -32,7 +32,7 @@ public interface GrandSubmissionsAPI {
 	@POST
 	@Path("/{id}/submissions")
 	public Response addGrandSubmission(@PathParam("id") @NotNull @Valid final UUID nonProfitId,
-	                                   final GrandSubmission grandSubmission);
+	                                   @NotNull @Valid final GrandSubmission grandSubmission);
 
 	/**
 	 * @retuns a submission by id for a nonprofit
