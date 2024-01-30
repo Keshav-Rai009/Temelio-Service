@@ -8,6 +8,7 @@ import com.temelio.service.GrandSubmissionsService;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.Response;
@@ -42,13 +43,21 @@ public class GrandSubmissionsController implements GrandSubmissionsAPI {
 		return this.grandSubmissionsService.addGrandSubmission(nonProfitId, grandSubmission);
 	}
 
+	@Override
+	@GET
+	@Path("/{id}/submissions/{gSId}")
+	public Response getGrandSubmission(@PathParam("id") final UUID nonProfitId, @PathParam("gSId") final UUID grandSubmissionId) {
+		return this.grandSubmissionsService.getGrandSubmission(nonProfitId, grandSubmissionId);
+	}
+
+
 	/**
 	 * @retuns a submission by id for a nonprofit
 	 * @param: Non Profit id
 	 * @param: submission id
 	 */
 	@Override
-	@GET
+	@PUT
 	@Path("/{id}/submissions/{gSId}")
 	public Response updateGrandSubmission(@PathParam("id") final UUID nonProfitId,
 	                                      @PathParam("gSId") final UUID grandSubmissionId,
